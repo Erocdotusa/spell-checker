@@ -10,6 +10,7 @@
 #include "trie.h"
 
 
+
 // Creates a new node
 trieNode* trieNodeCreate()
 {
