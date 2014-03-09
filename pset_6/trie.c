@@ -72,12 +72,18 @@ bool trieWordIsFound(const char* word, const trieNode* root)
 // inserts word into trie
 void trieWordInsert(const char* word, trieNode* root)
 {
+    int fails = 0;
     int length = (int) strlen(word);
     trieNode* nextTri = NULL;
     
     for (int i = 0; i < length; i++)
     {
         int index = trieIndexForChar(word[i]);
+        
+        if (index < 0) {
+            printf("FAIL: word:%s \n", word);
+            fails++;
+        }
         
         if (nextTri)
         {
@@ -113,7 +119,7 @@ void trieWordInsert(const char* word, trieNode* root)
 }
 
 // return int for mapping to child array
-// return zero for fail.
+// return -1 for fail.
 int trieIndexForChar(char input)
 {
     if (islower(input) )
@@ -128,5 +134,5 @@ int trieIndexForChar(char input)
     {
         return 26;
     }
-    else return 0;
+    else return -1;
 }
