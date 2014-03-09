@@ -27,6 +27,7 @@ void trieRemoveNode(trieNode* node)
 }
 
 
+
 // checks to see if a word is present in the root node, returns true if yes, else false
 bool trieWordIsFound(const char* word, const trieNode* root)
 {
