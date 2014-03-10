@@ -21,6 +21,7 @@ trieNode* trieNodeCreate()
 // removes a node
 void trieRemoveNode(trieNode* node)
 {
+    
     for(int i = 0; i < 27; ++i)
         if(node->children[i])
             trieRemoveNode(node->children[i]);
@@ -32,10 +33,10 @@ void trieRemoveNode(trieNode* node)
 // checks to see if a word is present in the root node, returns true if yes, else false
 bool trieWordIsFound(const char* word, const trieNode* root)
 {
-    int length = (int) strlen(word);
+    SHORT_INT length = (SHORT_INT) strlen(word);
     trieNode* nextTri = NULL;
     
-    for (int i = 0; i < length; i++)
+    for (SHORT_INT i = 0; i < length; i++)
     {
         int index = trieIndexForChar(word[i]);
         if (nextTri)
@@ -69,20 +70,14 @@ bool trieWordIsFound(const char* word, const trieNode* root)
     return NULL;
 }
 
-// inserts word into trie
 void trieWordInsert(const char* word, trieNode* root)
 {
-    int length = (int) strlen(word);
+    SHORT_INT length = (SHORT_INT) strlen(word);
     trieNode* nextTri = NULL;
     
-    for (int i = 0; i < length; i++)
+    for (SHORT_INT i = 0; i < length; i++)
     {
         int index = trieIndexForChar(word[i]);
-        
-        if (index < 0)
-        {
-            printf("FAIL: word:%s \n", word);
-        }
         
         if (nextTri)
         {
@@ -109,7 +104,7 @@ void trieWordInsert(const char* word, trieNode* root)
             
         }
         
-        else if (i == length - 1 && word[i] == '\n')
+        if (i == length - 1)
         {
             nextTri->isWord = true;
         }
@@ -119,7 +114,7 @@ void trieWordInsert(const char* word, trieNode* root)
 
 // return int for mapping to child array
 // return -1 for fail.
-int trieIndexForChar(char input)
+SHORT_INT trieIndexForChar(char input)
 {
     if (islower(input) )
     {
@@ -129,14 +124,14 @@ int trieIndexForChar(char input)
     {
         return input - 'A';
     }
-    else if (strcmp(&input, "\'") == 0)
+    else if (input == 39)
     {
-        printf("Returning 26");
         return 26;
     }
     else
     {
-        printf("Fail char: %c\n", input);
+        //fail
+        printf("Fail char: %i\n", input);
         return -1;
     }
     

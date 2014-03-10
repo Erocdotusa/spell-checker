@@ -2,8 +2,6 @@
 //  trie.h
 //  trie
 //
-//  Created by Joe Million on 3/6/14.
-//  Copyright (c) 2014 iMillIndustries. All rights reserved.
 //
 
 #ifndef trie_trie_h
@@ -15,7 +13,7 @@
 #include <ctype.h>
 #include <stdint.h>
 
-//typedef uint8_t  SHORT_INT;
+typedef uint8_t  SHORT_INT;
 
 
 
@@ -38,6 +36,6 @@ bool trieWordIsFound(const char* word, const trieNode* root) ;
 void trieWordInsert(const char* word, trieNode* root);
 
 // return int for mapping to child array
-int trieIndexForChar(char input);
+SHORT_INT trieIndexForChar(char input);
 
 #endif
