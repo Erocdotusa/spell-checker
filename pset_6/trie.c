@@ -3,7 +3,6 @@
 //  trie
 //
 //  Created by Joe Million on 3/6/14.
-//  Copyright (c) 2014 iMillIndustries. All rights reserved.
 //
 
 
@@ -104,7 +103,7 @@ void trieWordInsert(const char* word, trieNode* root)
             
         }
         
-        if (i == length - 1)
+        if (i == length - 1 && nextTri)
         {
             nextTri->isWord = true;
         }
