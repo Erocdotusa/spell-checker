@@ -58,11 +58,11 @@ bool load(const char* dictionary)
         return false;
     }
     
-    
+    char word[LENGTH];
     int index = 0;
     for (int c = fgetc(fp); c != EOF; c = fgetc(fp))
     {
-        char word[LENGTH];
+
         if (c != '\n' )
         {
             word[index] = c;
@@ -70,6 +70,7 @@ bool load(const char* dictionary)
         }
         else
         {
+            word[index] = '\0';
         	trieWordInsert(word, rootNode);
         	index = 0;
         	wordCount ++;
