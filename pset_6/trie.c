@@ -131,7 +131,13 @@ int trieIndexForChar(char input)
     }
     else if (strcmp(&input, "\'") == 0)
     {
+        printf("Returning 26");
         return 26;
     }
-    else return -1;
+    else
+    {
+        printf("Fail char: %c\n", input);
+        return -1;
+    }
+    
 }
