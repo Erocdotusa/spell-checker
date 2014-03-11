@@ -14,20 +14,18 @@
 
 
 
- 
+
 trieNode* rootNode;
 int wordCount;
 
 /**
  * Returns true if word is in dictionary else false.
  */
-  
+
 bool check(const char* word)
 {
     if (trieWordIsFound(word, rootNode))
-        
     {
-        
     	return true;
     }
     return false;
@@ -49,7 +47,6 @@ bool load(const char* dictionary)
         }
     }
     
-    // Open the file 
     FILE* fp = fopen(dictionary, "r");
     
     if (fp == NULL)
@@ -58,11 +55,11 @@ bool load(const char* dictionary)
         return false;
     }
     
-    char word[LENGTH];
+    char word[LENGTH + 1];
     int index = 0;
     for (int c = fgetc(fp); c != EOF; c = fgetc(fp))
     {
-
+        
         if (c != '\n' )
         {
             word[index] = c;
@@ -75,8 +72,8 @@ bool load(const char* dictionary)
         	index = 0;
         	wordCount ++;
             
-        } 
-    
+        }
+        
     }
     fclose(fp);
     

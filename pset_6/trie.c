@@ -20,12 +20,16 @@ trieNode* trieNodeCreate()
 // removes a node
 void trieRemoveNode(trieNode* node)
 {
-    
     for(int i = 0; i < 27; ++i)
+    {
         if(node->children[i])
+        {
             trieRemoveNode(node->children[i]);
+        }
+    }
     free(node);
 }
+
 
 
 
